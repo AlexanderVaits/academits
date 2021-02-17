@@ -1,4 +1,6 @@
-package academits.vaits.range;
+package academits.vaits.main;
+import academits.vaits.range.Range;
+
 import java.util.Scanner;
 
 public class Main {
@@ -45,8 +47,23 @@ public class Main {
 
                 System.out.println("Новое значение последнего числа: " + range.getTo());
             } else {
-                return;
+                break;
             }
         }
+
+        System.out.println("Введите начало первого диапазона: ");
+        double from1 = scanner.nextDouble();
+
+        System.out.println("Введите конец первого диапазона: ");
+        double to1 = scanner.nextDouble();
+
+        System.out.println("Введите начало второго диапазона: ");
+        double from2 = scanner.nextDouble();
+
+        System.out.println("Введите конец второго диапазона: ");
+        double to2 = scanner.nextDouble();
+
+        Range range1 = new Range(from1, to1);
+        Range range2 = new Range(from2, to2);
     }
 }
