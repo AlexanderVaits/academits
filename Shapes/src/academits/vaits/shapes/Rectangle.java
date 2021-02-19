@@ -1,5 +1,7 @@
 package academits.vaits.shapes;
 
+import java.util.Comparator;
+
 public class Rectangle implements Shapes {
     double sideLength1;
     double sideLength2;
@@ -27,5 +29,14 @@ public class Rectangle implements Shapes {
     @Override
     public double getPerimeter() {
         return (sideLength1 + sideLength2) * 2;
+    }
+
+    @Override
+    public String toString() {
+        return "Прямоугольник: ширина = " + getWeight()
+                + " высота = " + getHeight()
+                + " площадь = " + getArea()
+                + " периметр = " + getPerimeter();
+
     }
 }

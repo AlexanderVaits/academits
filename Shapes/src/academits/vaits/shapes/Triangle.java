@@ -48,5 +48,11 @@ public class Triangle implements Shapes {
         return Math.sqrt((semiPerimeter * (semiPerimeter - sideLength1) * (semiPerimeter - sideLength2) * (semiPerimeter - sideLength3)));
     }
 
-
+    @Override
+    public String toString() {
+        return "Треугольник: ширина = " + getWeight()
+                + " высота = " + getHeight()
+                + " площадь = " + getArea()
+                + " периметр = " + getPerimeter();
+    }
 }
