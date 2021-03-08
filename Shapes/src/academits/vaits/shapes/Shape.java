@@ -1,7 +1,7 @@
 package academits.vaits.shapes;
 
-public interface Shapes {
-    double getWeight();
+public interface Shape {
+    double getWidth();
 
     double getHeight();
 

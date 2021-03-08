@@ -1,4 +1,4 @@
-package academits.vaits.main;
+package academits.vaits.main_range;
 import academits.vaits.range.Range;
 
 import java.util.Scanner;

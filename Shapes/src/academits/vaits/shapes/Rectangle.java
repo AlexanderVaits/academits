@@ -1,42 +1,77 @@
 package academits.vaits.shapes;
 
-import java.util.Comparator;
+public class Rectangle implements Shape {
+    private double objectWidth;
+    private double objectHeight;
 
-public class Rectangle implements Shapes {
-    double sideLength1;
-    double sideLength2;
+    public Rectangle(double width, double height) {
+        this.objectWidth = width;
+        this.objectHeight = height;
+    }
 
-    public Rectangle(double sideLength1, double sideLength2) {
-        this.sideLength1 = sideLength1;
-        this.sideLength2 = sideLength2;
+    public double getObjectWidth() {
+        return objectWidth;
+    }
+
+    public void setWidth(double width) {
+        this.objectWidth = width;
+    }
+
+    public double getObjectHeight(){
+        return objectHeight;
+    }
+
+    public void setHeight(double height) {
+        this.objectHeight = height;
     }
 
     @Override
-    public double getWeight() {
-        return sideLength1;
+    public double getWidth() {
+        return objectWidth;
     }
 
     @Override
     public double getHeight() {
-        return sideLength2;
+        return objectHeight;
     }
 
     @Override
     public double getArea() {
-        return sideLength1 * sideLength2;
+        return objectWidth * objectHeight;
     }
 
     @Override
     public double getPerimeter() {
-        return (sideLength1 + sideLength2) * 2;
+        return (objectWidth + objectHeight) * 2;
     }
 
     @Override
     public String toString() {
-        return "Прямоугольник: ширина = " + getWeight()
-                + " высота = " + getHeight()
+        return "Прямоугольник: ширина = " + objectWidth
+                + " высота = " + objectHeight
                 + " площадь = " + getArea()
                 + " периметр = " + getPerimeter();
 
+    }
+
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+
+        if (o == null || o.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Rectangle r = (Rectangle) o;
+        return objectWidth == r.objectWidth && objectHeight == r.objectHeight;
+    }
+
+    public int hashCode(){
+        final int prime = 31;
+        int hash = 1;
+        hash = prime * hash + Double.hashCode(objectWidth);
+        hash = prime * hash + Double.hashCode(objectHeight);
+        return hash;
     }
 }
