@@ -1,4 +1,4 @@
-package academits.vaits.main_shape;
+package academits.vaits.shapes_main;
 
 import academits.vaits.shapes.*;
 

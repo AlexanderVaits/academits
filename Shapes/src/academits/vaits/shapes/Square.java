@@ -1,10 +1,9 @@
 package academits.vaits.shapes;
 
 public class Square implements Shape {
-
     private double sideLength;
 
-    public Square (double sideLength){
+    public Square(double sideLength) {
         this.sideLength = sideLength;
     }
 
@@ -12,8 +11,8 @@ public class Square implements Shape {
         return sideLength;
     }
 
-    public void setSideLength (double sideLength) {
-         this.sideLength = sideLength;
+    public void setSideLength(double sideLength) {
+        this.sideLength = sideLength;
     }
 
     @Override
@@ -43,12 +42,13 @@ public class Square implements Shape {
                 + " периметр = " + getPerimeter();
     }
 
+    @Override
     public boolean equals(Object o) {
         if (o == this) {
             return true;
         }
 
-        if (o == null || o.getClass() != this.getClass()) {
+        if (o == null || o.getClass() != getClass()) {
             return false;
         }
 
@@ -56,8 +56,10 @@ public class Square implements Shape {
         return sideLength == s.sideLength;
     }
 
-    public int hashCode(){
+    @Override
+    public int hashCode() {
         final int prime = 31;
+
         int hash = 1;
         hash = prime * hash + Double.hashCode(sideLength);
         return hash;

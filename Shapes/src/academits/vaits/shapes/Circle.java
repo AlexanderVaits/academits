@@ -27,7 +27,7 @@ public class Circle implements Shape {
 
     @Override
     public double getArea() {
-        return Math.PI * Math.pow(radius, 2);
+        return Math.PI * radius * radius;
     }
 
     @Override
@@ -40,15 +40,15 @@ public class Circle implements Shape {
         return "Окружность: радиус = " + radius
                 + " площадь = " + getArea()
                 + " периметр = " + getPerimeter();
-
     }
 
+    @Override
     public boolean equals(Object o) {
         if (o == this) {
             return true;
         }
 
-        if (o == null || o.getClass() != this.getClass()) {
+        if (o == null || o.getClass() != getClass()) {
             return false;
         }
 
@@ -56,8 +56,10 @@ public class Circle implements Shape {
         return radius == c.radius;
     }
 
-    public int hashCode(){
+    @Override
+    public int hashCode() {
         final int prime = 31;
+
         int hash = 1;
         hash = prime * hash + Double.hashCode(radius);
         return hash;

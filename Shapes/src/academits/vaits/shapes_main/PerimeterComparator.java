@@ -1,6 +1,7 @@
-package academits.vaits.main_shape;
+package academits.vaits.shapes_main;
 
 import academits.vaits.shapes.Shape;
+
 import java.util.Comparator;
 
 public class PerimeterComparator implements Comparator<Shape> {
