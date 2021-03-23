@@ -56,6 +56,7 @@ public class Rectangle implements Shape {
         }
 
         Rectangle r = (Rectangle) o;
+
         return width == r.width && height == r.height;
     }
 
@@ -66,6 +67,7 @@ public class Rectangle implements Shape {
         int hash = 1;
         hash = prime * hash + Double.hashCode(width);
         hash = prime * hash + Double.hashCode(height);
+
         return hash;
     }
 }

@@ -32,7 +32,7 @@ public class Square implements Shape {
 
     @Override
     public double getPerimeter() {
-        return sideLength * 2;
+        return sideLength * 4;
     }
 
     @Override
@@ -53,6 +53,7 @@ public class Square implements Shape {
         }
 
         Square s = (Square) o;
+
         return sideLength == s.sideLength;
     }
 
@@ -62,6 +63,7 @@ public class Square implements Shape {
 
         int hash = 1;
         hash = prime * hash + Double.hashCode(sideLength);
+
         return hash;
     }
 }

@@ -86,11 +86,11 @@ public class Triangle implements Shape {
 
     @Override
     public double getArea() {
-        double sideLength1 = getSideLength(x1, y1, x2, y2);
-        double sideLength2 = getSideLength(x1, y1, x3, y3);
-        double sideLength3 = getSideLength(x3, y3, x2, y2);
-        double semiPerimeter = (sideLength1 + sideLength2 + sideLength3) / 2;
-        return Math.sqrt(semiPerimeter * (semiPerimeter - sideLength1) * (semiPerimeter - sideLength2) * (semiPerimeter - sideLength3));
+        double side1Length = getSideLength(x1, y1, x2, y2);
+        double side2Length = getSideLength(x1, y1, x3, y3);
+        double side3Length = getSideLength(x3, y3, x2, y2);
+        double semiPerimeter = (side1Length + side2Length + side3Length) / 2;
+        return Math.sqrt(semiPerimeter * (semiPerimeter - side1Length) * (semiPerimeter - side2Length) * (semiPerimeter - side3Length));
     }
 
     @Override
@@ -111,6 +111,7 @@ public class Triangle implements Shape {
         }
 
         Triangle t = (Triangle) o;
+
         return x1 == t.x1 && x2 == t.x2 && x3 == t.x3 && y1 == t.y1 && y2 == t.y2 && y3 == t.y3;
     }
 
@@ -125,6 +126,7 @@ public class Triangle implements Shape {
         hash = prime * hash + Double.hashCode(y1);
         hash = prime * hash + Double.hashCode(y2);
         hash = prime * hash + Double.hashCode(y3);
+
         return hash;
     }
 }

@@ -53,6 +53,7 @@ public class Circle implements Shape {
         }
 
         Circle c = (Circle) o;
+
         return radius == c.radius;
     }
 
@@ -62,6 +63,7 @@ public class Circle implements Shape {
 
         int hash = 1;
         hash = prime * hash + Double.hashCode(radius);
+
         return hash;
     }
 }
