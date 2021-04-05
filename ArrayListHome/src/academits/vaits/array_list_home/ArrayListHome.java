@@ -21,7 +21,7 @@ public class ArrayListHome {
     }
 
     public static ArrayList<Integer> deleteRepeatingNumbers(ArrayList<Integer> list) {
-        ArrayList<Integer> newList = new ArrayList<Integer>();
+        ArrayList<Integer> newList = new ArrayList<>();
 
         for (int i = 0; i < list.size(); i++) {
             newList.add(list.get(i));
