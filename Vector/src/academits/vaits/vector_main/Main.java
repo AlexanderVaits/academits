@@ -22,8 +22,8 @@ public class Main {
 
         // Third constructor test
 
-        int testSize2 = 8;
-        double[] testComponents2 = {3, 2, 4, 5, 6, 7, 8};
+        int testSize2 = 3;
+        double[] testComponents2 = {5, 6, 7, 8};
 
         Vector vector3 = new Vector(testSize2, testComponents2);
         System.out.println("Вектор созданный третьим конструктором: " + vector3);
@@ -37,26 +37,26 @@ public class Main {
 
         // getSize test
 
-        System.out.println("Размерность вектора 4: " + Vector.getSize(vector4));
+        System.out.println("Размерность вектора 4: " + vector4.getSize());
         System.out.println();
 
         // Static method tests
         // Add test
 
-        Vector vectorAdd = Vector.getSumResult(vector2, vector3);
-        System.out.println("Результат сложения векторов 2 и 3: " + vectorAdd);
+        Vector resultingAdditionVector = Vector.getSum(vector2, vector3);
+        System.out.println("Результат сложения векторов 2 и 3: " + resultingAdditionVector);
         System.out.println();
 
         // Deduct test
 
-        Vector vectorDeduct = Vector.getSubtractionResult(vector2, vector3);
-        System.out.println("Результат разницы векторов 2 и 3: " + vectorDeduct);
+        Vector resultingDifferenceVector = Vector.getDifference(vector2, vector3);
+        System.out.println("Результат разницы векторов 2 и 3: " + resultingDifferenceVector);
         System.out.println();
 
         // Scalar Product test
 
-        double productResult = Vector.getScalarProduct(vector2, vector3);
-        System.out.println("Скалярное произведение векторов 2 и 3 = " + productResult);
+        double scalarProductResult = Vector.getScalarProduct(vector2, vector3);
+        System.out.println("Скалярное произведение векторов 2 и 3 = " + scalarProductResult);
         System.out.println();
 
         // Not static method test
@@ -74,28 +74,37 @@ public class Main {
 
         // multiply by scalar test
 
-        vectorAdd.multiplyByScalar(2);
-        System.out.println("Резульатат умножения вектора на скаляр: " + vectorAdd);
+        resultingAdditionVector.multiplyByScalar(2);
+        System.out.println("Резульатат умножения вектора на скаляр: " + resultingAdditionVector);
         System.out.println();
 
-        // Expand test
+        // Reverse test
 
-        vectorAdd.unfold();
-        System.out.println("Результат разворота вектора: " + vectorAdd);
+        resultingAdditionVector.reverse();
+        System.out.println("Результат разворота вектора: " + resultingAdditionVector);
         System.out.println();
 
         // Get length test
 
-        System.out.println("Длина вектора: " + vectorAdd.getLength());
+        System.out.println("Длина вектора: " + resultingAdditionVector.getLength());
         System.out.println();
 
         // Get/Set component by index
 
-        System.out.println("Компонента вектора по индексу: " + vectorAdd.getComponent(3));
+        System.out.println("Компонента вектора по индексу: " + resultingAdditionVector.getComponent(3));
         System.out.println();
 
-        vectorAdd.setComponent(3, 10);
-        System.out.println("Измененная компонента по индексу: " + vectorAdd.getComponent(3));
+        resultingAdditionVector.setComponent(3, 10);
+        System.out.println("Измененная компонента по индексу: " + resultingAdditionVector.getComponent(3));
         System.out.println();
+
+        double[] vectorTest1comp = {1, 2, 3, 4, 5,};
+        double[] vectorTest3comp = {1, 2, 3, 4, 5,};
+        Vector vectorTest1 = new Vector(vectorTest1comp);
+        Vector vectorTest2 = new Vector(vectorTest1);
+        Vector vectorTest3 = new Vector(vectorTest3comp);
+        vectorTest1.add(vectorTest3);
+        System.out.println(vectorTest1);
+        System.out.println(vectorTest2);
     }
 }
