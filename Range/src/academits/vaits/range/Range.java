@@ -30,7 +30,32 @@ public class Range {
     }
 
     public boolean isInside(double number) {
-        double epsilon = 10e-10;
-        return (number - from >= -epsilon) && (to - number >= -epsilon);
+        return (number - from >= 0) && (to - number >= 0);
     }
+
+    public String toString (){
+        return "(" + from +
+                ", " + to + ")";
+    }
+
+    public static Range getIntersection(Range range1, Range range2) {
+        if (range1.isInside(range2.from) && range1.isInside(range2.to)) {
+            return new Range(range2.from, range2.to);
+        }
+
+        if (range2.isInside(range1.from) && range2.isInside(range1.to)) {
+            return new Range(range1.from, range1.to);
+        }
+
+        if (range1.isInside(range2.from) && range2.isInside(range1.to) && range1.from != range2.to && range2.from != range1.to) {
+            return new Range(range2.from, range1.to);
+        }
+
+        if ((range1.isInside(range2.to) && range2.isInside(range1.from)) && range1.from != range2.to && range2.from != range1.to) {
+            return new Range(range1.from, range2.to);
+        }
+
+        return null;
+    }
+
 }

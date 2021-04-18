@@ -1,11 +1,14 @@
-package academits.vaits.main_range;
+package academits.vaits.range_main;
+
 import academits.vaits.range.Range;
+
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        /*
         System.out.println("Работем с диапозоном!");
         System.out.println("Введите первое число диапазона: ");
         double from = scanner.nextDouble();
@@ -49,6 +52,7 @@ public class Main {
                 break;
             }
         }
+        */
 
         System.out.println("Введите начало первого диапазона: ");
         double from1 = scanner.nextDouble();
@@ -64,5 +68,6 @@ public class Main {
 
         Range range1 = new Range(from1, to1);
         Range range2 = new Range(from2, to2);
+        System.out.println((Range.getIntersection(range1, range2)));
     }
 }
