@@ -3,66 +3,71 @@ package academits.vaits.array_list_home;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class ArrayListHome {
-    public static ArrayList<String> getLines() throws FileNotFoundException {
+    public static ArrayList<String> getFileLines(String path) throws FileNotFoundException {
         ArrayList<String> lines = new ArrayList<>();
-        try (Scanner scanner = new Scanner(new FileInputStream("input.txt"))) {
+
+        try (Scanner scanner = new Scanner(new FileInputStream(path))) {
             while (scanner.hasNextLine()) {
                 lines.add(scanner.nextLine());
             }
         }
+
         return lines;
     }
 
-    public static void deleteOddNumbers(ArrayList<Integer> list) {
-        list.removeIf(x -> x % 2 == 1);
-    }
+    public static void deleteEvenNumbers(ArrayList<Integer> list) {
+        list.removeAll(Collections.singleton(null));
 
-    public static ArrayList<Integer> deleteRepeatingNumbers(ArrayList<Integer> list) {
-        ArrayList<Integer> newList = new ArrayList<>();
-
-        for (int i = 0; i < list.size(); i++) {
-            newList.add(list.get(i));
-
-            for (int j = i + 1; j < list.size(); ) {
-                if (list.get(i).equals(list.get(j))) {
-                    list.remove(j);
-                } else {
-                    j++;
-                }
+        for (int i = 0; i < list.size(); ) {
+            if (list.get(i) % 2 == 0) {
+                list.remove(i);
+            } else {
+                i++;
             }
         }
+    }
+
+    public static ArrayList<Integer> getUniqueNumbers(ArrayList<Integer> list) {
+        ArrayList<Integer> newList = new ArrayList<>();
+        newList.ensureCapacity(list.size());
+
+        for (Integer integer : list) {
+            if (!newList.contains(integer)) {
+                newList.add(integer);
+            }
+        }
+
         return newList;
     }
 
     public static void main(String[] args) {
         // getLines test
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Укажите путь к файлу");
+        String path = scanner.nextLine();
+
         try {
-            System.out.println(getLines());
+            System.out.println("Строки файла:");
+            System.out.println(getFileLines(path));
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("Файл не найден");
         }
 
         // deleteOddNumbers test
-        ArrayList<Integer> list1 = new ArrayList<>();
-        list1.add(1);
-        list1.add(2);
-        list1.add(3);
-        list1.add(4);
-        list1.add(5);
-        deleteOddNumbers(list1);
-        System.out.println(list1);
+        ArrayList<Integer> oddNumbersList = new ArrayList<>(Arrays.asList(1, 2, 4, 3, 4, 4, 8));
+        deleteEvenNumbers(oddNumbersList);
+        System.out.println("Нечетные числа списка: ");
+        System.out.println(oddNumbersList);
 
-        // deleteRepeatingNumbers test
-        ArrayList<Integer> list2 = new ArrayList<>();
-        list2.add(1);
-        list2.add(5);
-        list2.add(2);
-        list2.add(1);
-        list2.add(3);
-        list2.add(5);
-        System.out.println(deleteRepeatingNumbers(list2));
+        // getUniqueNumbers test
+        ArrayList<Integer> uniqueNumbersList = new ArrayList<>(Arrays.asList(1, 3, 4, 5, null, 3, 5, 7, 7, 7, 7, 7));
+        System.out.println("Уникальные элементы списка: ");
+        System.out.println(getUniqueNumbers(uniqueNumbersList));
     }
 }
