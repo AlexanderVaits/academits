@@ -46,7 +46,7 @@ public class Vector {
     public void add(Vector vector) {
         increaseToOneSize(vector);
 
-        for (int i = 0; i < Math.min(components.length, vector.components.length); i++) {
+        for (int i = 0; i < vector.components.length; i++) {
             components[i] += vector.components[i];
         }
     }
@@ -54,7 +54,7 @@ public class Vector {
     public void subtract(Vector vector) {
         increaseToOneSize(vector);
 
-        for (int i = 0; i < Math.min(components.length, vector.components.length); i++) {
+        for (int i = 0; i < vector.components.length; i++) {
             components[i] -= vector.components[i];
         }
     }
@@ -88,32 +88,24 @@ public class Vector {
     }
 
     public static Vector getSum(Vector vector1, Vector vector2) {
-        int vectorMaxLength = Math.max(vector1.components.length, vector2.components.length);
-        double[] newVectorComponents = new double[vectorMaxLength];
+        Vector resultVector = new Vector(vector1);
+        resultVector.add(vector2);
 
-        for (int i = 0; i < vectorMaxLength; i++) {
-            newVectorComponents[i] = (i < vector1.components.length ? vector1.components[i] : 0) + (i < vector2.components.length ? vector2.components[i] : 0);
-        }
-
-        return new Vector(newVectorComponents);
+        return resultVector;
     }
 
     public static Vector getDifference(Vector vector1, Vector vector2) {
-        int vectorMaxLength = Math.max(vector1.components.length, vector2.components.length);
-        double[] newVectorComponents = new double[vectorMaxLength];
+        Vector resultVector = new Vector(vector1);
+        resultVector.subtract(vector2);
 
-        for (int i = 0; i < vectorMaxLength; i++) {
-            newVectorComponents[i] = (i < vector1.components.length ? vector1.components[i] : 0) - (i < vector2.components.length ? vector2.components[i] : 0);
-        }
-
-        return new Vector(newVectorComponents);
+        return resultVector;
     }
 
     public static double getScalarProduct(Vector vector1, Vector vector2) {
         double product = 0;
-        double vectorsMinLength = Math.min(vector1.components.length, vector2.components.length);
+        double vectorsMinSize = Math.min(vector1.components.length, vector2.components.length);
 
-        for (int i = 0; i < vectorsMinLength; i++) {
+        for (int i = 0; i < vectorsMinSize; i++) {
             product += vector1.components[i] * vector2.components[i];
         }
 

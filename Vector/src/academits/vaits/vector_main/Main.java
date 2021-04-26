@@ -55,8 +55,8 @@ public class Main {
 
         // Scalar Product test
 
-        double scalarProductResult = Vector.getScalarProduct(vector2, vector3);
-        System.out.println("Скалярное произведение векторов 2 и 3 = " + scalarProductResult);
+        double scalarProduct = Vector.getScalarProduct(vector2, vector3);
+        System.out.println("Скалярное произведение векторов 2 и 3 = " + scalarProduct);
         System.out.println();
 
         // Not static method test
@@ -98,11 +98,11 @@ public class Main {
         System.out.println("Измененная компонента по индексу: " + resultingAdditionVector.getComponent(3));
         System.out.println();
 
-        double[] vectorTest1comp = {1, 2, 3, 4, 5,};
-        double[] vectorTest3comp = {1, 2, 3, 4, 5,};
-        Vector vectorTest1 = new Vector(vectorTest1comp);
+        double[] vectorTest1Components = {1, 2, 3, 4, 5,};
+        double[] vectorTest3Components = {1, 2, 3, 4, 5,};
+        Vector vectorTest1 = new Vector(vectorTest1Components);
         Vector vectorTest2 = new Vector(vectorTest1);
-        Vector vectorTest3 = new Vector(vectorTest3comp);
+        Vector vectorTest3 = new Vector(vectorTest3Components);
         vectorTest1.add(vectorTest3);
         System.out.println(vectorTest1);
         System.out.println(vectorTest2);
