@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class ArrayListHome {
@@ -21,8 +20,6 @@ public class ArrayListHome {
     }
 
     public static void deleteEvenNumbers(ArrayList<Integer> list) {
-        list.removeAll(Collections.singleton(null));
-
         for (int i = 0; i < list.size(); ) {
             if (list.get(i) % 2 == 0) {
                 list.remove(i);
@@ -33,16 +30,15 @@ public class ArrayListHome {
     }
 
     public static ArrayList<Integer> getUniqueNumbers(ArrayList<Integer> list) {
-        ArrayList<Integer> newList = new ArrayList<>();
-        newList.ensureCapacity(list.size());
+        ArrayList<Integer> uniqueNumbersList = new ArrayList<>(list.size());
 
         for (Integer integer : list) {
-            if (!newList.contains(integer)) {
-                newList.add(integer);
+            if (!uniqueNumbersList.contains(integer)) {
+                uniqueNumbersList.add(integer);
             }
         }
 
-        return newList;
+        return uniqueNumbersList;
     }
 
     public static void main(String[] args) {
@@ -53,21 +49,21 @@ public class ArrayListHome {
         String path = scanner.nextLine();
 
         try {
-            System.out.println("Строки файла:");
-            System.out.println(getFileLines(path));
+            ArrayList<String> lines = getFileLines(path);
+            System.out.println("Строки файла: " + lines);
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден");
         }
 
         // deleteOddNumbers test
-        ArrayList<Integer> oddNumbersList = new ArrayList<>(Arrays.asList(1, 2, 4, 3, 4, 4, 8));
-        deleteEvenNumbers(oddNumbersList);
+        ArrayList<Integer> numbersList1 = new ArrayList<>(Arrays.asList(1, 2, 4, 3, 4, 4, 8));
+        deleteEvenNumbers(numbersList1);
         System.out.println("Нечетные числа списка: ");
-        System.out.println(oddNumbersList);
+        System.out.println(numbersList1);
 
         // getUniqueNumbers test
-        ArrayList<Integer> uniqueNumbersList = new ArrayList<>(Arrays.asList(1, 3, 4, 5, null, 3, 5, 7, 7, 7, 7, 7));
+        ArrayList<Integer> numbersList2 = new ArrayList<>(Arrays.asList(1, 3, 4, 5, null, 3, 5, 7, 7, 7, 7, 7));
         System.out.println("Уникальные элементы списка: ");
-        System.out.println(getUniqueNumbers(uniqueNumbersList));
+        System.out.println(getUniqueNumbers(numbersList2));
     }
 }
