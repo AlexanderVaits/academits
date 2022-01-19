@@ -33,29 +33,40 @@ public class Range {
         return (number - from >= 0) && (to - number >= 0);
     }
 
-    public String toString (){
+    public String toString() {
         return "(" + from +
                 ", " + to + ")";
     }
 
-    public static Range getIntersection(Range range1, Range range2) {
-        if (range1.isInside(range2.from) && range1.isInside(range2.to)) {
-            return new Range(range2.from, range2.to);
+    public Range getIntersection(Range newRange) {
+        if (this.from > newRange.to || newRange.from > this.to) {
+            return null;
         }
 
-        if (range2.isInside(range1.from) && range2.isInside(range1.to)) {
-            return new Range(range1.from, range1.to);
+        double from = Math.max(this.from, newRange.from);
+        double to = Math.min(this.to, newRange.to);
+
+        if (from == to) {
+            return null;
         }
 
-        if (range1.isInside(range2.from) && range2.isInside(range1.to) && range1.from != range2.to && range2.from != range1.to) {
-            return new Range(range2.from, range1.to);
-        }
-
-        if ((range1.isInside(range2.to) && range2.isInside(range1.from)) && range1.from != range2.to && range2.from != range1.to) {
-            return new Range(range1.from, range2.to);
-        }
-
-        return null;
+        return new Range(from, to);
     }
 
+    public Range[] gerMerge (Range newRange) {
+        if (this.from > newRange.to || newRange.from > this.to) {
+            Range [] ranges = new Range[2];
+            ranges[0] = new Range(this.from, this.to);
+            ranges [1] = newRange;
+
+            return ranges;
+        }
+
+        double from = Math.min(this.from, newRange.from);
+        double to = Math.max(this.to, newRange.to);
+        Range [] ranges = new Range[1];
+        ranges [0] = new Range(from, to);
+
+        return ranges;
+    }
 }

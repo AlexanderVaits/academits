@@ -2,12 +2,13 @@ package academits.vaits.range_main;
 
 import academits.vaits.range.Range;
 
-import java.util.Objects;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
         /*
         System.out.println("Работем с диапозоном!");
         System.out.println("Введите первое число диапазона: ");
@@ -29,7 +30,7 @@ public class Main {
                 System.out.println("Не принадлежит");
             }
 
-            System.out.println("Желаете изменить диапазон? (Ответ 'YES' при необходимости изменить диапазон и любой другой, если необходмость отсутствует)");
+            System.out.println("Желаете изменить диапазон? (Ответ 'YES' при необходимости изменить диапазон или любое другое значение, если необходмость отсутствует)");
             scanner.nextLine();
             String answer = scanner.nextLine();
 
@@ -52,6 +53,7 @@ public class Main {
                 break;
             }
         }
+
         */
 
         System.out.println("Введите начало первого диапазона: ");
@@ -68,6 +70,8 @@ public class Main {
 
         Range range1 = new Range(from1, to1);
         Range range2 = new Range(from2, to2);
-        System.out.println((Range.getIntersection(range1, range2)));
+        System.out.println(range1.getIntersection(range2));
+
+        System.out.println(Arrays.toString(range1.gerMerge(range2)));
     }
 }
