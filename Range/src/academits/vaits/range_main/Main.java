@@ -56,22 +56,22 @@ public class Main {
 
         */
 
-        System.out.println("Введите начало первого диапазона: ");
+        System.out.println("Введите начало первого диапазона:");
         double from1 = scanner.nextDouble();
 
-        System.out.println("Введите конец первого диапазона: ");
+        System.out.println("Введите конец первого диапазона:");
         double to1 = scanner.nextDouble();
 
-        System.out.println("Введите начало второго диапазона: ");
+        System.out.println("Введите начало второго диапазона:");
         double from2 = scanner.nextDouble();
 
-        System.out.println("Введите конец второго диапазона: ");
+        System.out.println("Введите конец второго диапазона:");
         double to2 = scanner.nextDouble();
 
         Range range1 = new Range(from1, to1);
         Range range2 = new Range(from2, to2);
         System.out.println(range1.getIntersection(range2));
-
-        System.out.println(Arrays.toString(range1.gerMerge(range2)));
+        System.out.println(Arrays.toString(range1.getMerge(range2)));
+        System.out.println(Arrays.toString(range1.getDifference(range2)));
     }
 }
