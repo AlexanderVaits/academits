@@ -45,40 +45,45 @@ public class Range {
         return new Range(Math.max(from, range.from), Math.min(to, range.to));
     }
 
-    public Range[] getMerge(Range range) {
+    public Range[] getUnion(Range range) {
         if (from > range.to || range.from > to) {
-            /*
-            Range[] ranges = new Range[2];
-            ranges[0] = new Range(this.from, this.to);
-            ranges[1] = range;
-
-            return ranges;
-
-             */
-            return new Range[] {new Range(from, to), new Range(range.from, range.to)};
+            return new Range[]{new Range(from, to), new Range(range.from, range.to)};
         }
-        /*
-        double from = Math.min(this.from, range.from);
-        double to = Math.max(this.to, range.to);
-        Range[] ranges = new Range[1];
-        ranges[0] = new Range(from, to);
 
-         */
-
-        return new Range[] {new Range(Math.min(from, range.from), Math.max(to, range.to))};
+        return new Range[]{new Range(Math.min(from, range.from), Math.max(to, range.to))};
     }
 
-    public Range[] getDifference (Range range) {
+    public Range[] getDifference(Range range) {
+        /*
         if (from == range.from && to == range.to) {
-            return null;
-
-        } else if (from < range.from && to < range.to && to > range.from) {
-            return new Range[] {new Range(from, range.from)};
-
-        } else  if (to < range.from) {
-            return new Range[] {new Range(from, to)};
+            return new Range[0];
         }
 
-        return new Range[] {new Range(from, range.from), new Range(range.to, to)};
+        if (from <= range.from && to <= range.to && to >= range.from) {
+            return new Range[]{new Range(from, range.from)};
+        }
+
+        if (from >= range.from && to >= range.to && from <= range.to) {
+            return new Range[]{new Range(range.to, to)};
+        }
+
+        if (to <= range.from || from >= range.to) {
+            return new Range[]{new Range(from, to)};
+        }
+         */
+
+        if (getIntersection(range) != null) {
+            if (from <= range.from && to <= range.to && from != range.from) {
+                return new Range[]{new Range(from, range.from)};
+            }
+
+            if (from >= range.from && to >= range.to && to != range.to) {
+                return new Range[]{new Range(range.to, to)};
+            }
+
+            return new Range[0];
+        }
+
+        return new Range[]{new Range(Math.min(from, range.from), Math.max(from, range.from)), new Range(Math.min(range.to, to), Math.max(range.to, to))};
     }
 }

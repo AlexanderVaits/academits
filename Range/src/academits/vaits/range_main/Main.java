@@ -71,7 +71,7 @@ public class Main {
         Range range1 = new Range(from1, to1);
         Range range2 = new Range(from2, to2);
         System.out.println(range1.getIntersection(range2));
-        System.out.println(Arrays.toString(range1.getMerge(range2)));
+        System.out.println(Arrays.toString(range1.getUnion(range2)));
         System.out.println(Arrays.toString(range1.getDifference(range2)));
     }
 }
