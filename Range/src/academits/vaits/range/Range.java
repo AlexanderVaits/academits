@@ -54,36 +54,21 @@ public class Range {
     }
 
     public Range[] getDifference(Range range) {
-        /*
-        if (from == range.from && to == range.to) {
-            return new Range[0];
-        }
+        if (!(from >= range.to || range.from >= to)) {
+            if (from >= range.from && to <= range.to) {
+                return new Range[0];
+            }
 
-        if (from <= range.from && to <= range.to && to >= range.from) {
-            return new Range[]{new Range(from, range.from)};
-        }
-
-        if (from >= range.from && to >= range.to && from <= range.to) {
-            return new Range[]{new Range(range.to, to)};
-        }
-
-        if (to <= range.from || from >= range.to) {
-            return new Range[]{new Range(from, to)};
-        }
-         */
-
-        if (getIntersection(range) != null) {
-            if (from <= range.from && to <= range.to && from != range.from) {
+            if (from <= range.from && to <= range.to) {
                 return new Range[]{new Range(from, range.from)};
             }
 
-            if (from >= range.from && to >= range.to && to != range.to) {
+            if (from >= range.from) {
                 return new Range[]{new Range(range.to, to)};
             }
 
-            return new Range[0];
+            return new Range[]{new Range(from, range.from), new Range(range.to, to)};
         }
-
-        return new Range[]{new Range(Math.min(from, range.from), Math.max(from, range.from)), new Range(Math.min(range.to, to), Math.max(range.to, to))};
+        return new Range[]{new Range(from, to)};
     }
 }
