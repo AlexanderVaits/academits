@@ -98,8 +98,8 @@ public class Main {
         System.out.println("Измененная компонента по индексу: " + resultingAdditionVector.getComponent(3));
         System.out.println();
 
-        double[] vectorTest1Components = {1, 2, 3, 4, 5,};
-        double[] vectorTest3Components = {1, 2, 3, 4, 5,};
+        double[] vectorTest1Components = {1, 2, 3, 4, 5};
+        double[] vectorTest3Components = {1, 2, 3, 4, 5};
         Vector vectorTest1 = new Vector(vectorTest1Components);
         Vector vectorTest2 = new Vector(vectorTest1);
         Vector vectorTest3 = new Vector(vectorTest3Components);

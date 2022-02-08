@@ -7,7 +7,7 @@ public class Vector {
 
     public Vector(int dimension) {
         if (dimension <= 0) {
-            throw new IllegalArgumentException("Vector dimension must be > 0. Now dimension is" + dimension);
+            throw new IllegalArgumentException("Vector dimension must be > 0. Now dimension is " + dimension);
         }
 
         components = new double[dimension];
@@ -15,7 +15,7 @@ public class Vector {
 
     public Vector(double[] components) {
         if (components.length == 0) {
-            throw new IllegalArgumentException("Vector dimension must be > 0. Now dimension is" + components.length);
+            throw new IllegalArgumentException("Vector dimension must be > 0. Now dimension is " + components.length);
         }
 
         this.components = Arrays.copyOf(components, components.length);
@@ -23,7 +23,7 @@ public class Vector {
 
     public Vector(int dimension, double[] components) {
         if (dimension <= 0) {
-            throw new IllegalArgumentException("Vector dimension must be > 0. Now dimension is" + dimension);
+            throw new IllegalArgumentException("Vector dimension must be > 0. Now dimension is " + dimension);
         }
 
         this.components = Arrays.copyOf(components, dimension);
@@ -112,6 +112,7 @@ public class Vector {
         return product;
     }
 
+    @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder("{");
 
@@ -124,6 +125,7 @@ public class Vector {
         return stringBuilder.toString();
     }
 
+    @Override
     public boolean equals(Object o) {
         if (o == this) {
             return true;
@@ -138,6 +140,7 @@ public class Vector {
         return Arrays.equals(components, v.components);
     }
 
+    @Override
     public int hashCode() {
         return Arrays.hashCode(components);
     }
